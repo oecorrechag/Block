@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+    
+    <section class="blog">
+
+        <article class="portada">
+            <img src="{{ url_for('static', filename='profile_pics/img1.jpg') }}" alt="img1" width="1000">
+            <div class="description">
+                <h1>Ultima entrada de blog</h1>
+                <div class="autor">
+                    <p>
+                        <img src="{{ url_for('static', filename='profile_pics/default.png') }}" alt="default" width="35px" height="35px"><span>Joe Doe</span>
+                    </p>
+                    <span>Diciembre 5 2020</span>
+                </div> 
+            </div>
+        </article>
+
+        <div class="contenedor">
+            <h2 class="titulo"> Entradas <span>Ante</span>riores</h2> <!--Sub-titulo-->   
+        </div>
+
+        <section id = "blog-items" class="blog-items">
+
+            {% for post in posts %}
+
+            <article class="item-blog">
+                <img src="{{ url_for('static', filename='profile_pics/img6.jpg') }}" alt="img2" width="300" height="300">
+                <div class="description">
+                    <h3>{{ post.content }}</h3>
+                    <div class="autor">
+                        <p>
+                            <img src="{{ url_for('static', filename='profile_pics/default.png') }}" alt="default" width="35px" height="35px"><span>{{ post.author }}</span>
+                        </p>
+                        <span>{{ post.date_posted }}</span>
+                    </div> 
+                </div>                
+            </article>
+
+            {% endfor %}
+
+        </section>
+
+        <div class="paginador">
+            <span>Pagina 1 de 5</span>
+            <ul>
+                <li class="selected">1</li>
+                <li><a href="">2</a></li>
+                <li><a href="">3</a></li>
+                <li><a href="">4</a></li>
+                <li><a href="">Siguiente</a></li>
+                <li><a href="">Ultima Pagina</a></li>
+            </ul>
+        </div>
+    </section>
+
+{% endblock content %}
