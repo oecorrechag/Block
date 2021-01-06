@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+    <article class="item-blog">
+        <img src="{{ url_for('static', filename='profile_pics/img6.jpg') }}" alt="img2" width="300" height="300">
+        <div class="description">
+            <h3>{{ post.title }}</h3>
+            <p>
+                {{ post.content }}
+            </p>
+            <div class="autor">
+                <p>
+                    <img src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}" 
+                    alt="default" width="35px" height="35px"><span>{{ post.author.username }}</span>
+                </p>
+                <span>{{ post.date_posted.strftime('%Y-%m-%d') }}</span>
+            </div> 
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('update_post', post_id=post.id) }}" class="button red">Update</a></li>
+                    <li><form action="{{ url_for('delete_post', post_id=post.id)  }}" method=POST> <input class="button red" type="submit" value="Delete"></li>
+                </ul>
+            </nav>
+
+        </div>                
+    </article>
+
+{% endblock content %}

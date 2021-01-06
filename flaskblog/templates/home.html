@@ -27,14 +27,17 @@
             {% for post in posts %}
 
             <article class="item-blog">
-                <img src="{{ url_for('static', filename='profile_pics/img6.jpg') }}" alt="img2" width="300" height="300">
+                <a href="{{ url_for('post', post_id=post.id) }}">
+                    <img src="{{ url_for('static', filename='profile_pics/img6.jpg') }}" alt="img2" width="300" height="300">
+                </a>
                 <div class="description">
-                    <h3>{{ post.content }}</h3>
+                    <h3><a href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h3>
                     <div class="autor">
                         <p>
-                            <img src="{{ url_for('static', filename='profile_pics/default.png') }}" alt="default" width="35px" height="35px"><span>{{ post.author }}</span>
+                            <img src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}" 
+                            alt="default" width="35px" height="35px"><span>{{ post.author.username }}</span>
                         </p>
-                        <span>{{ post.date_posted }}</span>
+                        <span>{{ post.date_posted.strftime('%Y-%m-%d') }}</span>
                     </div> 
                 </div>                
             </article>
@@ -42,18 +45,5 @@
             {% endfor %}
 
         </section>
-
-        <div class="paginador">
-            <span>Pagina 1 de 5</span>
-            <ul>
-                <li class="selected">1</li>
-                <li><a href="">2</a></li>
-                <li><a href="">3</a></li>
-                <li><a href="">4</a></li>
-                <li><a href="">Siguiente</a></li>
-                <li><a href="">Ultima Pagina</a></li>
-            </ul>
-        </div>
-    </section>
 
 {% endblock content %}
