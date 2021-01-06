@@ -46,7 +46,7 @@ header{
 
 .button.red{
     background: #e47004;
-    border-color: yellow;
+    border-color: #e47004;
 }
 
 nav{
@@ -91,6 +91,7 @@ nav a{
     padding: 0 10px;
     align-items: center;
 }
+
 
 nav a:hover{
     box-shadow: inset 0 5px 0 #e47004 !important;
@@ -144,11 +145,11 @@ h1{
     margin: 10px 0 15px;
 }
 
-/* .item-blog{
+.item-blog{
     width: 300px;
     height: 375px;
     padding-bottom: 50px;
-} */
+}
 
 .item-blog .description{
     margin-bottom: 15px;
@@ -232,3 +233,11 @@ footer{
 }
 
 footer a:active,.footer a:hover{color:#4b5664}
+
+
+
+
+a.article-title:hover {
+    color: #428bca;
+    text-decoration: none;
+  }
