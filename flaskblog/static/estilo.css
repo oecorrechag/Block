@@ -9,7 +9,7 @@ a{
 }
 
 header{
-    background: black;
+    background: white;
     height: 50px;
     padding: 0 10px;
     display: flex;
@@ -49,6 +49,18 @@ header{
     border-color: #e47004;
 }
 
+
+.button.blue{
+    background: #0d75bb;
+    border-color: #0d75bb;
+}
+
+
+.button.green{
+    background: #0f833f;
+    border-color: #0f833f;
+}
+
 nav{
     height: inherit;
     margin: 0;
@@ -67,7 +79,7 @@ nav ul{
 nav li{
     list-style: none;
     /* margin: 0 10px; */
-    color: white;
+    color: black;
     height: inherit;
     display: flex;
     align-items: center;
@@ -84,7 +96,7 @@ nav li:last-child:after{
 }
 
 nav a{
-    color: white;
+    color: black;
     text-decoration: none;
     height: inherit;
     display: flex;
@@ -215,11 +227,11 @@ h1{
 
 
 footer{
-    background:#000000;
+    background:white;
     padding:10px 0;
     margin-top: 50px;
     text-align:center;
-    color:white
+    color:black
 }
 
 .footer .love{
@@ -229,7 +241,7 @@ footer{
 .footer a{
     text-decoration:none;
     margin:0;
-    color:#fff
+    color:black
 }
 
 footer a:active,.footer a:hover{color:#4b5664}
@@ -241,3 +253,63 @@ a.article-title:hover {
     color: #428bca;
     text-decoration: none;
   }
+
+
+.contenedor{
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    position: relative;
+}
+
+.formulario{
+    display: flex;
+    width: 1000px;
+    height: 400px;
+    color: black;
+    margin: 25px 0 0 200px;
+}
+
+
+.Abutton .button{
+    margin: 10px 0 0 650px;
+}
+
+
+.col3, .col4{
+    display: flex;
+    flex-direction: column;
+}
+
+.col3{
+    margin-right: 25px;  
+}
+
+.col4{
+    align-items: flex-start;
+}
+
+.imes{
+    width: 500px;
+}
+
+.imes, .col5{
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    margin: 20px 10px 0px 20px;
+}
+
+
+.fdatos{
+    width: 1000px;
+    height: 400px;
+    color: black;
+    margin: 150px 200px 0px 200p;
+}
+
+
+.contenedor2{
+    margin: auto;
+    position: relative;
+}
