@@ -31,22 +31,9 @@
     
     <section class="blog">
 
-        <article class="portada">
-            <img src="{{ url_for('static', filename='profile_pics/img1.jpg') }}" alt="img1" width="1000">
-            <div class="description">
-                <h1>Ultima entrada de blog</h1>
-                <div class="autor">
-                    <p>
-                        <img src="{{ url_for('static', filename='profile_pics/default.png') }}" alt="default" width="35px" height="35px"><span>Joe Doe</span>
-                    </p>
-                    <span>Diciembre 5 2020</span>
-                </div> 
-            </div>
-        </article>
-
         <div class="contenedor">
-            <h2 class="titulo"> Entradas <span>Ante</span>riores</h2> <!--Sub-titulo-->   
-        </div>
+            <h2 class="titulo"> Entradas <span>Ante</span>riores</h2> de {{ user.username }} ({{ posts.total }})   
+        </div> <h1 class="mb-3">
 
         <section id = "blog-items" class="blog-items">
 
@@ -78,9 +65,9 @@
             {% for page_num in posts.iter_pages(left_edge = 1, right_edge = 1, left_current = 1, right_current = 2) %}
                 {% if page_num %}
                     {% if posts.page == page_num %}
-                        <li><a href="{{ url_for('home', page=page_num) }}">{{ page_num }}</a></li>
+                        <li><a href="{{ url_for('user_posts', username=user.username, page=page_num) }}">{{ page_num }}</a></li>
                     {% else %}
-                        <li><a href="{{ url_for('home', page=page_num) }}">{{ page_num }}</a></li>
+                        <li><a href="{{ url_for('user_posts', username=user.username, page=page_num) }}">{{ page_num }}</a></li>
                     {% endif %}
                 {% else %}
                     ...

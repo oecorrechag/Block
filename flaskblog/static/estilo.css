@@ -1,3 +1,7 @@
+/* *{
+    border: solid red 1px;
+} */
+
 body{
     font-family: 'allerta', sans-serif;
     margin: 0;
@@ -55,11 +59,6 @@ header{
     border-color: #0d75bb;
 }
 
-
-.button.green{
-    background: #0f833f;
-    border-color: #0f833f;
-}
 
 nav{
     height: inherit;
@@ -229,7 +228,7 @@ h1{
 footer{
     background:white;
     padding:10px 0;
-    margin-top: 50px;
+    margin-top: 10px;
     text-align:center;
     color:black
 }
@@ -265,12 +264,12 @@ a.article-title:hover {
 .formulario{
     display: flex;
     width: 1000px;
-    height: 400px;
+    height: 460px;
     color: black;
     margin: 25px 0 0 200px;
 }
 
-
+/* Uso en crear post */
 .Abutton .button{
     margin: 10px 0 0 650px;
 }
@@ -289,16 +288,7 @@ a.article-title:hover {
     align-items: flex-start;
 }
 
-.imes{
-    width: 500px;
-}
 
-.imes, .col5{
-    display: flex;
-    flex-direction: column;
-    width: 1000px;
-    margin: 20px 10px 0px 20px;
-}
 
 
 .fdatos{
@@ -313,3 +303,58 @@ a.article-title:hover {
     margin: auto;
     position: relative;
 }
+
+
+
+/* Para Login y Register */
+.section{
+    display: flex;
+    width: 400px;
+    height: 200px;
+    margin: 200px 0 0 500px;
+}
+
+
+/* Para account */
+.imes{
+    width: 500px;
+}
+
+.imes, .col5{
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    margin: 20px 10px 0px 80px;
+}
+
+.daccount{
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    position: relative;
+}
+
+.dform{
+    display: flex;
+    width: 1000px;
+    height: 460px;
+    color: black;
+    margin: 25px 0 0 200px;
+}
+
+.dinfo{
+    display: flex;
+    width: 400px;
+    height: 200px;
+    margin: 30px 0 0 500px;
+    padding: 10px 50px 40px;
+}
+
+.Bbutton .button{
+    margin: 10px 0 0 330px;
+}
+
+
+
+
+

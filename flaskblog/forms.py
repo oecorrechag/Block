@@ -41,14 +41,11 @@ class LoginForm(FlaskForm):
 class UpdateAccountForm(FlaskForm):
     username = StringField('Username',
                            validators=[DataRequired(), Length(min=5, max=20)])
-    bio = TextAreaField('Bio',
-                        validators=[DataRequired()])                         
+    bio = TextAreaField('Bio')                         
     email = StringField('Email',
                         validators=[DataRequired(), Email()])
-    facebook = StringField('Facebook',
-                           validators=[DataRequired()])
-    twitter = StringField('Twitter',
-                           validators=[DataRequired()])                      
+    facebook = StringField('Facebook')
+    twitter = StringField('Twitter')                      
     picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png'])])
     submit = SubmitField('Update')
 
