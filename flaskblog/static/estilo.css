@@ -358,3 +358,10 @@ a.article-title:hover {
 
 
 
+
+
+
+/* Para los saltos de linea de los articulos  */
+.article-content {
+    white-space: pre-line;
+  }
