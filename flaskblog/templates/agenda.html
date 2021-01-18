@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<header>
+    <a href="{{ url_for('main.home') }}">
+        <img src="{{ url_for('static', filename='profile_pics/logo.jpg') }}" alt="logo" height="40">
+    </a>
+    <div class="header-right">
+        {% if current_user.is_authenticated %}
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('main.home') }}">Home</a></li>
+                <li><a class="nav-item nav-link" href="{{ url_for('posts.new_post') }}">New Post</a></li>
+                <li><a href="{{ url_for('users.agenda') }}" class="is-active">Agenda</a></li>
+                <li><a href="{{ url_for('main.home') }}">Blog</a></li>
+                <li><a href="#">Info</a></li>
+                <li><a href="{{ url_for('users.account') }}">Account</a></li>
+            </ul>
+        </nav>
+            <a href="{{ url_for('users.logout') }}" class="button red">logout</a>
+        {% else %}
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('main.home') }}" class="is-active">Home</a></li>
+            </ul>
+        </nav>
+            <a href="{{ url_for('users.login') }}" class="button blue">Login / Register</a>
+        {% endif %}
+    </div>
+</header> 
+
+
+<div class="content">
+    <h1>Task Master</h1>
+    {% if tasks|length < 1 %}
+    <h4> There are no tasks. Create one below!</h4>
+
+    {% else %}
+
+    <table>
+        <tr>
+            <th> Task </th>
+            <th> Added </th>
+            <th> actions </th>
+        </tr>
+
+        {% for task in tasks %}
+
+            <tr>
+                <td>{{ task.content}}</td>
+                <td>{{ task.date_created.date() }}</td>
+                <td>
+                    <a href="/delete/{{task.id}}"> Delete </a>
+                    <br>
+                    <a href="/update_task/{{task.id}}"> Update </a>
+                </td>
+            </tr>
+
+        {% endfor %}
+
+    </table>
+
+    {% endif %}
+
+
+    <div class="form">
+        <form action="/agenda" method="POST">
+            <input type="text" name="content" id="content">
+            <input type="submit" value="Add Task">
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

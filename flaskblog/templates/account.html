@@ -2,29 +2,29 @@
 {% block content %}
 
 <header>
-    <a href="{{ url_for('home') }}">
+    <a href="{{ url_for('main.home') }}">
         <img src="{{ url_for('static', filename='profile_pics/logo.jpg') }}" alt="logo" height="40">
     </a>
     <div class="header-right">
         {% if current_user.is_authenticated %}
         <nav>
             <ul>
-                <li><a href="{{ url_for('home') }}">Home</a></li>
-                <li><a href="{{ url_for('new_post') }}">New Post</a></li>
-                <li><a href="#">Agenda</a></li>
-                <li><a href="{{ url_for('home') }}">Blog</a></li>
+                <li><a href="{{ url_for('main.home') }}">Home</a></li>
+                <li><a href="{{ url_for('posts.new_post') }}">New Post</a></li>
+                <li><a href="{{ url_for('users.agenda') }}">Agenda</a></li>
+                <li><a href="{{ url_for('main.home') }}">Blog</a></li>
                 <li><a href="#">Info</a></li>
-                <li><a class="is-active" href="{{ url_for('account') }}">Account</a></li>
+                <li><a class="is-active" href="{{ url_for('users.account') }}">Account</a></li>
             </ul>
         </nav>
-            <a href="{{ url_for('logout') }}" class="button red">logout</a>
+            <a href="{{ url_for('users.logout') }}" class="button red">logout</a>
         {% else %}
         <nav>
             <ul>
-                <li><a href="{{ url_for('home') }}" class="is-active">Home</a></li>
+                <li><a href="{{ url_for('main.home') }}" class="is-active">Home</a></li>
             </ul>
         </nav>
-            <a href="{{ url_for('login') }}" class="button blue">Login / Register</a>
+            <a href="{{ url_for('users.login') }}" class="button blue">Login / Register</a>
         {% endif %}
     </div>
 </header>   
@@ -47,89 +47,39 @@
         </div>
     </section>
 
-
 </div>
 
-
-
-<div class="dinfo">
+<div class="contenedor3">
     <form method="POST" action="" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
-        <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Account Info</legend>
-            
-            <div class="form-group">
+        <fieldset class="formulario">
+            <legend class="border-bottom">Account Info</legend>
+
+            <div class="col6">
                 {{ form.username.label(class="form-control-label") }}
-                {% if form.username.errors %}
-                    {{ form.username(class="form-control form-control-lg is-invalid") }}
-                    <div class="invalid-feedback">
-                        {% for error in form.username.errors %}
-                            <span>{{ error }}</span>
-                        {% endfor %}
-                    </div>
-                {% else %}
-                    {{ form.username(class="form-control form-control-lg") }}
-                {% endif %}
-            </div>
-
-            <div class="form-group">
+                <br><br><br><br>
                 {{ form.bio.label(class="form-control-label") }}
-                {% if form.bio.errors %}
-                    {{ form.bio(class="form-control form-control-lg is-invalid") }}
-                    <div class="invalid-feedback">
-                        {% for error in form.bio.errors %}
-                            <span>{{ error }}</span>
-                        {% endfor %}
-                    </div>
-                {% else %}
-                    {{ form.bio(class="form-control form-control-lg") }}
-                {% endif %}
-            </div>
-
-            <div class="form-group">
+                <br>
                 {{ form.email.label(class="form-control-label") }}
-                {% if form.email.errors %}
-                    {{ form.email(class="form-control form-control-lg is-invalid") }}
-                    <div class="invalid-feedback">
-                        {% for error in form.email.errors %}
-                            <span>{{ error }}</span>
-                        {% endfor %}
-                    </div>
-                {% else %}
-                    {{ form.email(class="form-control form-control-lg") }}
-                {% endif %}
-            </div>
-
-            <div class="form-group">
+                <br>
                 {{ form.facebook.label(class="form-control-label") }}
-                {% if form.facebook.errors %}
-                    {{ form.facebook(class="form-control form-control-lg is-invalid") }}
-                    <div class="invalid-feedback">
-                        {% for error in form.facebook.errors %}
-                            <span>{{ error }}</span>
-                        {% endfor %}
-                    </div>
-                {% else %}
-                    {{ form.facebook(class="form-control form-control-lg") }}
-                {% endif %}
-            </div>
-
-            <div class="form-group">
+                <br>
                 {{ form.twitter.label(class="form-control-label") }}
-                {% if form.twitter.errors %}
-                    {{ form.twitter(class="form-control form-control-lg is-invalid") }}
-                    <div class="invalid-feedback">
-                        {% for error in form.twitter.errors %}
-                            <span>{{ error }}</span>
-                        {% endfor %}
-                    </div>
-                {% else %}
-                    {{ form.twitter(class="form-control form-control-lg") }}
-                {% endif %}
+                <br>
+                {{ form.picture.label() }}
             </div>
 
-            <div class="form-group">
-                {{ form.picture.label() }}
+            <div class="col7">
+                {{ form.username(class="form-control form-control-lg", style="width:650px;") }}
+                <br>
+                {{ form.bio(class="form-control form-control-lg", rows="5", style="width:650px;") }}
+                <br>
+                {{ form.email(class="form-control form-control-lg", style="width:650px;") }}
+                <br>
+                {{ form.facebook(class="form-control form-control-lg", style="width:650px;") }}
+                <br>
+                {{ form.twitter(class="form-control form-control-lg", style="width:650px;") }}
+                <br>
                 {{ form.picture(class="form-control-file") }}
                 {% if form.picture.errors %}
                     {% for error in form.picture.errors %}
@@ -140,11 +90,13 @@
 
         </fieldset>
 
-        <div class="Bbutton">
+        <div class="Abutton">
             <input type="submit" value="Update Profile" class="button blue">
         </div>
-        
+
     </form>
 </div>
+
+
 
 {% endblock content %}

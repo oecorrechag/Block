@@ -354,8 +354,25 @@ a.article-title:hover {
     margin: 10px 0 0 330px;
 }
 
+.contenedor3{
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    position: relative;
+}
 
+.col6, .col7{
+    display: flex;
+    flex-direction: column;
+}
 
+.col6{
+    margin-right: 100px;  
+}
+
+.col7{
+    align-items: flex-start;
+}
 
 
 

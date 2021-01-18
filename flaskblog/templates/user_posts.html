@@ -2,29 +2,29 @@
 {% block content %}
 
     <header>
-        <a href="{{ url_for('home') }}">
+        <a href="{{ url_for('main.home') }}">
             <img src="{{ url_for('static', filename='profile_pics/logo.jpg') }}" alt="logo" height="40">
         </a>
         <div class="header-right">
             {% if current_user.is_authenticated %}
             <nav>
                 <ul>
-                    <li><a href="{{ url_for('home') }}" class="is-active">Home</a></li>
-                    <li><a class="nav-item nav-link" href="{{ url_for('new_post') }}">New Post</a></li>
-                    <li><a href="#">Agenda</a></li>
+                    <li><a href="{{ url_for('main.home') }}" class="is-active">Home</a></li>
+                    <li><a class="nav-item nav-link" href="{{ url_for('posts.new_post') }}">New Post</a></li>
+                    <li><a href="{{ url_for('users.agenda') }}">Agenda</a></li>
                     <li><a href="#blog-items">Blog</a></li>
                     <li><a href="#">Info</a></li>
-                    <li><a href="{{ url_for('account') }}">Account</a></li>
+                    <li><a href="{{ url_for('users.account') }}">Account</a></li>
                 </ul>
             </nav>
-                <a href="{{ url_for('logout') }}" class="button red">logout</a>
+                <a href="{{ url_for('users.logout') }}" class="button red">logout</a>
             {% else %}
             <nav>
                 <ul>
-                    <li><a href="{{ url_for('home') }}" class="is-active">Home</a></li>
+                    <li><a href="{{ url_for('main.home') }}" class="is-active">Home</a></li>
                 </ul>
             </nav>
-                <a href="{{ url_for('login') }}" class="button blue">Login / Register</a>
+                <a href="{{ url_for('users.login') }}" class="button blue">Login / Register</a>
             {% endif %}
         </div>
     </header>
@@ -32,23 +32,44 @@
     <section class="blog">
 
         <div class="contenedor">
-            <h2 class="titulo"> Entradas <span>Ante</span>riores</h2> de {{ user.username }} ({{ posts.total }})   
+            <h2 class="titulo"> Entradas <span>Ante</span>riores de {{ user.username }} ({{ posts.total }}) </h2>   
         </div> <h1 class="mb-3">
+
+
+        <div class="daccount">
+            <section class="dform">
+        
+                <div class="imes">
+                    <img src="{{ url_for('static', filename='profile_pics/' + user.image_file) }}" 
+                        alt="default" width="320" height="400">
+                </div>
+            
+                <div class="col5">
+                    <h2 class="account-heading">{{ user.username }}</h2>
+                    <p class="text-secondary">{{ user.bio }}</p>
+                    <p class="text-secondary">{{ user.email }}</p>
+                    <p><a href="current_user.facebook">{{ user.facebook }}</a></p>
+                    <p><a href="current_user.twitter">{{ user.twitter }}</a></p>
+                </div>
+            </section>
+        
+        </div>
+
 
         <section id = "blog-items" class="blog-items">
 
             {% for post in posts.items %}
 
             <article class="item-blog">
-                <a href="{{ url_for('post', post_id=post.id) }}">
+                <a href="{{ url_for('posts.post', post_id=post.id) }}">
                     <img src="{{ url_for('static', filename='profile_pics/img6.jpg') }}" alt="img2" width="300" height="300">
                 </a>
                 <div class="description">
-                    <h3><a href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h3>
+                    <h3><a href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</a></h3>
                     <div class="autor">
                         <p>
                             <img src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}" 
-                            alt="default" width="35px" height="35px"><span><a href="{{ url_for('user_posts', username=post.author.username) }}">{{ post.author.username }}</a></span>
+                            alt="default" width="35px" height="35px"><span><a href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a></span>
                         </p>
                         <span>{{ post.date_posted.strftime('%Y-%m-%d') }}</span>
                     </div> 
@@ -65,9 +86,9 @@
             {% for page_num in posts.iter_pages(left_edge = 1, right_edge = 1, left_current = 1, right_current = 2) %}
                 {% if page_num %}
                     {% if posts.page == page_num %}
-                        <li><a href="{{ url_for('user_posts', username=user.username, page=page_num) }}">{{ page_num }}</a></li>
+                        <li><a href="{{ url_for('users.user_posts', username=user.username, page=page_num) }}">{{ page_num }}</a></li>
                     {% else %}
-                        <li><a href="{{ url_for('user_posts', username=user.username, page=page_num) }}">{{ page_num }}</a></li>
+                        <li><a href="{{ url_for('users.user_posts', username=user.username, page=page_num) }}">{{ page_num }}</a></li>
                     {% endif %}
                 {% else %}
                     ...

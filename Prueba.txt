@@ -1,5 +1,6 @@
-Hoy es 12 de enero
+Hoy es 18 de enero
 
-falta la imagen en el blog pero ya vamos terminando.
+falta la imagen en el blog y error en agenda pero ya 
+vamos terminando.
 
 Flask <3
